@@ -4,8 +4,10 @@ Author: Changling Li
 
 Date: 09/29/2019
 
-This project aims to solve the game sudoku. Given a random number of locked numbers, the program will show up a window where the current sudoku is displayed. Clicking the start button, it will start to solve the sudoku. To reset, click the reset button,
+This project aims to solve the game sudoku. Given a random number of locked numbers, the program will show up a window where the current sudoku is displayed. Clicking the start button, it will start to solve the sudoku. To reset, click the reset button.
+
 The implementation uses 2D array to create the grid where the numbers are located. The solve function is based on backtracking which uses a stack data structure to keep track of the solutions.
+
 The automate file runs the sudoku for 100 times with numbers of locked numbers from 0 to 4 and counts the number of solved cases. This intends to show the statistics of the solution.
 
 In the following example, we selected 2 locked numbers as showing in first image and then run the program to find the solution as shown in second image.
