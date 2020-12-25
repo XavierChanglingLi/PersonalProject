@@ -21,7 +21,7 @@ One example is shown below where we selected the RandomCustomer model and the st
 
 To run the simulation:
 
-Compile: javac Pick2CustomerSimulation.java/PickItemCustomerSimulation.java/PickyCustomerSimulation.java/RandomCustomerSimulation.java
+Compile: javac Pick2CustomerSimulation.java or PickItemCustomerSimulation.java or PickyCustomerSimulation.java or RandomCustomerSimulation.java
 
-Run: java Pick2CustomerSimulation/PickItemCustomerSimulation/PickyCustomerSimulation/RandomCustomerSimulation
+Run: java Pick2CustomerSimulation or PickItemCustomerSimulation or PickyCustomerSimulation or RandomCustomerSimulation
 
