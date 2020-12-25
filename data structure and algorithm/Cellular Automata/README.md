@@ -1,4 +1,5 @@
 Author: Changling Li
+
 Date: 09/21/2019
 
 This project simulate the Conway's Game of Life which is a version of cellular automata. It follows certain rules to update each cell's life state and thus forms certain pattern. 
