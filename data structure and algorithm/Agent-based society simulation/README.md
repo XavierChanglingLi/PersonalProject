@@ -1,3 +1,5 @@
+#Agent-based Society Simulation
+
 Author: Changling Li
 
 Date: 10/09/2019
@@ -8,8 +10,3 @@ To run the simulation:
 
 Compile: javac Simulation.java
 Run: java Simulation 
-window width
-window height
-radius
-type of agent
-number of agent
