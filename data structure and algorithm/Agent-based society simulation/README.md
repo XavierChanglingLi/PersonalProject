@@ -9,4 +9,5 @@ The implementation os based on the linked list data structure which is node base
 To run the simulation:
 
 Compile: javac Simulation.java
+
 Run: java Simulation 
