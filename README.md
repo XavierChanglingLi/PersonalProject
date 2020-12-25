@@ -1,3 +1,3 @@
 # PersonalProject
-Organized personal projects which covers the usage of data structure and algorithm, data visualization, machine learning
+Organized personal projects that explores the usage of data structure and algorithm, data visualization, and machine learning
 
