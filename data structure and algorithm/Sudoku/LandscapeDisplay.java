@@ -1,0 +1,179 @@
+/*
+*Author: Bruce Maxwell, Changling Li
+*Date: 9/29/19
+*Name: LandscapeDisplay.java
+*Creates a window using the JFrame class.
+(Creates a drawable area in the window using the JPanel class.
+*/
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import javax.swing.*;
+import java.awt.event.*;
+
+/**
+ * Displays a Board graphically using Swing. In this version, we use a Board
+ * class rather than a Landscape) and we do not make the assumption that
+ * we are displaying a grid.
+ * @author bseastwo
+ */
+ public class LandscapeDisplay
+{
+    JFrame win;
+    protected Board scape; 
+    public LandscapePanel canvas;
+    private int gridScale; // width (and height) of each square in the grid
+    static JButton button;
+    static JButton button2;
+
+    /**
+     * Initializes a display window for a Landscape.
+     * @param scape the Landscape to display
+     * @param scale controls the relative size of the display
+     */
+    public LandscapeDisplay(Board scape, int scale)
+    {
+        //create the start button
+        button = new JButton("start");
+        button.setBounds(50,280,40,40);
+        button.setSize(60,40);
+        button.setVisible(true);
+
+        //create the reset button
+        button2 = new JButton("restart");
+        button2.setBounds(180, 280, 40, 40);
+        button2.setSize(60,40);
+        button2.setVisible(true);
+
+        // setup the window
+        this.win = new JFrame("Sudoku");
+        this.win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.win.add(button);
+        this.win.add(button2);
+
+        this.scape = scape;
+        this.gridScale = scale;
+
+        // create a panel in which to display the Landscape
+        this.canvas = new LandscapePanel( (int) (this.scape.getCols()+2) * this.gridScale,
+																					(int) (this.scape.getRows()+2) * this.gridScale);
+
+        // add the panel to the window, layout, and display
+        this.canvas.setLayout(null);
+        this.canvas.add(button);
+        this.canvas.add(button2);
+        this.win.add(this.canvas, BorderLayout.CENTER);
+        this.win.pack();
+        this.win.setVisible(true);
+    }
+
+    public void resetLand(Board scape, int scale){
+        repaint();
+        this.scape = scape;
+        this.gridScale = scale;
+
+        // create a panel in which to display the Landscape
+        this.canvas = new LandscapePanel( (int) (this.scape.getCols()+2) * this.gridScale,
+                                                                                    (int) (this.scape.getRows()+2) * this.gridScale);
+        this.win.add(this.canvas, BorderLayout.CENTER);
+        this.win.pack();
+        this.win.setVisible(true);
+    }
+
+
+    /**
+     * Saves an image of the display contents to a file.  The supplied
+     * filename should have an extension supported by javax.imageio, e.g.
+     * "png" or "jpg".
+     *
+     * @param filename  the name of the file to save
+     */
+    public void saveImage(String filename)
+    {
+        // get the file extension from the filename
+        String ext = filename.substring(filename.lastIndexOf('.') + 1, filename.length());
+
+        // create an image buffer to save this component
+        Component tosave = this.win.getRootPane();
+        BufferedImage image = new BufferedImage(tosave.getWidth(), tosave.getHeight(), 
+                                                BufferedImage.TYPE_INT_RGB);
+
+        // paint the component to the image buffer
+        Graphics g = image.createGraphics();
+        tosave.paint(g);
+        g.dispose();
+
+        // save the image
+        try
+                {
+                        ImageIO.write(image, ext, new File(filename));
+                }
+        catch (IOException ioe)
+                {
+                        System.out.println(ioe.getMessage());
+                }
+    }
+
+    /**
+     * This inner class provides the panel on which Landscape elements
+     * are drawn.
+     */
+
+
+    private class LandscapePanel extends JPanel
+    {
+        /**
+         * Creates the panel.
+         * @param width     the width of the panel in pixels
+         * @param height        the height of the panel in pixels
+         */
+        public LandscapePanel(int width, int height)
+        {
+                super();
+                this.setPreferredSize(new Dimension(width, height));
+                this.setBackground(Color.white);
+        }
+
+        /**
+         * Method overridden from JComponent that is responsible for
+         * drawing components on the screen.  The supplied Graphics
+         * object is used to draw.
+         * 
+         * @param g     the Graphics object used for drawing
+         */
+        public void paintComponent(Graphics g)
+        {
+            super.paintComponent(g);
+            scape.draw( g, gridScale );    
+        } // end paintComponent
+        
+    } // end LandscapePanel
+
+    public void repaint() {
+	this.win.repaint();
+    }
+
+
+    public static void main(String[] args) throws InterruptedException {
+        Board scape = new Board();
+
+	   if(args.length > 0)
+	       scape.read( args[0] );
+
+        LandscapeDisplay display = new LandscapeDisplay(scape, 30);
+   }
+}

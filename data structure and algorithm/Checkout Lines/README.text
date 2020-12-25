@@ -1,0 +1,17 @@
+Author: Changling Li
+Date: 10/14/2019
+
+This project simulates the check-out line at a large store to explore four different algorithms for decision-making. The four decision-making strategies are:
+1. Select the queue with the least customers.
+2. Select the queue with the least check out items.
+3. Pick a queue at random.
+4. Pick two queues randomly and then join the shorter queue.
+
+The implementation uses queue data structure which is a node-based doubly-linked list. The simulation runs 10 times with the average checking-out time and standard deviation printed out.
+
+
+To run the simulation:
+Compile: javac Pick2CustomerSimulation.java/PickItemCustomerSimulation.java/PickyCustomerSimulation.java/RandomCustomerSimulation.java
+
+Run: java Pick2CustomerSimulation/PickItemCustomerSimulation/PickyCustomerSimulation/RandomCustomerSimulation
+
