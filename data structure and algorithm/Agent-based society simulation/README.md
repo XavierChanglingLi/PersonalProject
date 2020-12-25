@@ -8,8 +8,8 @@ To run the simulation:
 
 Compile: javac Simulation.java
 Run: java Simulation 
-<window width>
-<window height>
-<radius>
-<type of agent>
-<number of agent>
+window width
+window height
+radius
+type of agent
+number of agent
