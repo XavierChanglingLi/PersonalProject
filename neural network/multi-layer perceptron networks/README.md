@@ -1,4 +1,4 @@
-# Single Layer Network
+# Multi-Layer Network
 
 Author: Changling Li
 
