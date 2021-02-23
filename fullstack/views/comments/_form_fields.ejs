@@ -1,0 +1,20 @@
+<div>
+    <label>Course ID</label>
+    <select name="courseNumber">
+        <% courses.forEach(course => { %>
+            <% if(course.id === comment.courseNumber){ %>
+            <option selected label = "<%= course.name%>" value="<%= course.id %>">
+        <%}else{%>
+            <option label = "<%= course.name%>" value = "<%= course.id %>">
+        <%}%>
+    <%})%>
+    </select>
+</div>
+<div>
+    <label>Professor Name</label>
+    <input type="text" name="professor" value="<%=comment.professor%>">
+</div>
+<div>
+    <label>Evaluation</label>
+    <textarea name="description"><%=comment.description%></textarea>
+</div>

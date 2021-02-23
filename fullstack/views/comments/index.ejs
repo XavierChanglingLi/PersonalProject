@@ -1,0 +1,20 @@
+<h2>Search Comments</h2>
+<form action="/comments" method="GET">
+    <div>
+        <label>Course ID</label>
+        <input type="text" name="id" value="<%= searchOptions.id%>">
+    </div>
+    <div>
+        <label>Professor Name</label>
+        <input type="text" name="professor" value="<%=searchOptions.professor%>">
+    </div>
+    <div>
+        <label>Published After</label>
+        <input type="date" name="publishedAfter" value="<%=searchOptions.publishedAfter%>">
+    </div>
+    <button type="submit">Search</button>
+</form>
+<br>
+<% comments.forEach(comment =>{%>
+    <div><%= comment.description%></div>
+<%})%>

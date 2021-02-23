@@ -1,0 +1,5 @@
+<h2><%= comment.description%></h2>
+
+<a href="/comments/<%= comment.id%>/edit">Edit</a>
+<%- include('../partials/deleteForm', {url: `/courses/${course.id}`})%>
+<a href="/courses/<%= comment.course.id%>">View Course</a>
