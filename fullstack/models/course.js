@@ -9,7 +9,7 @@ const courseSchema = new mongoose.Schema({
 });
 
 courseSchema.pre('remove', function(next){
-    Comment.find({id: this.id},(err,comments)=>{
+    Comment.find({courseNumber: this.id},(err,comments)=>{
         if(err){
             next(err);
         }else if(comments.length>0){

@@ -38,4 +38,60 @@ router.post('/', async (req,res)=>{
     }
 });
 
+router.get('/:id', async (req,res)=>{
+    try{
+        const course = await Course.findById(req.params.id);
+        const comments = await Comment.find({courseNumber: course.id}).limit(20).exec();
+        res.render('courses/show',{
+            course: course,
+            commentsOfCourse: comments
+        })
+    }catch{
+        res.redirect('/');
+    }
+})
+
+router.get('/:id/edit', async(req,res)=>{
+    try{
+        const course = await Course.findById(req.params.id);
+        res.render('courses/edit',{course: course});
+    }catch{
+        res.redirect('/courses')
+    }
+})
+
+router.put('/:id', async(req,res)=>{
+    let course;
+    try{
+        course = await Course.findById(req.params.id);
+        course.name = req.body.name;
+        await course.save();
+        res.redirect(`/courses/${course.id}`);
+    }catch{
+        if (course==null){
+            res.redirect('/');
+        }else{
+            res.render('courses/edit',{
+                course: course,
+                errorMessage: 'Error updating course'
+            })
+        }
+    }
+})
+
+router.delete('/:id', async(req, res)=>{
+    let course;
+    try{
+        course = await Course.findById(req.params.id);
+        await course.remove();
+        res.redirect('/courses');
+    }catch{
+        if(course==null){
+            res.redirect('/');
+        }else{
+            res.redirect(`/courses/${course.id}`);
+        }
+    }
+})
+
 module.exports = router;

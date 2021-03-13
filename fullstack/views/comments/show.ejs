@@ -1,5 +1,8 @@
 <h2><%= comment.description%></h2>
+<div>Course: <%= comment.courseNumber.name%></div>
+<div>Publish Date: <%=comment.publishDate.toDateString()%></div>
+<div>Evaluation: <%= comment.description%></div>
 
 <a href="/comments/<%= comment.id%>/edit">Edit</a>
-<%- include('../partials/deleteForm', {url: `/courses/${course.id}`})%>
-<a href="/courses/<%= comment.course.id%>">View Course</a>
+<%- include('../partials/deleteForm', {url: `/comments/${comment.id}`})%>
+<a href="/courses/<%= comment.courseNumber.id%>">View Course</a>

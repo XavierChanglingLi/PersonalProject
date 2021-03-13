@@ -1,5 +1,5 @@
 <h2>Edit Comment</h2>
-<form action="/comments/<%= comment.id%>" method = "POST">
+<form action="/comments/<%= comment.id%>?_method=PUT" method = "POST">
     <%- include('_form_fields')%>
     <a href="/comments">Cancel</a>
     <button type="submit">Update</button>

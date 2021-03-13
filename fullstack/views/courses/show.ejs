@@ -1,10 +1,14 @@
 <h2><%= course.name%></h2>
 <a href="/courses/<%= course.id%>/edit">Edit</a>
 <%- include('../partials/deleteForm',
-{url: `/courses/${course.id}`})%>
-<% if(CommentsOfCourse.length>0){%>
+            {url: `/courses/${course.id}`})%>
+<% if(commentsOfCourse.length>0){%>
     <h2>Comments Of the Course</h2>
-    <% CommentsOfCourse.forEach(book =>{%>
-<!--    <img height="150" width = "100" src="<%=book.coverImageBasePath%>">-->
+    <% commentsOfCourse.forEach(comment =>{%>
+        <div><%= comment.description%></div>
+        <a href="/comments/<%= comment.id%>">View</a>
+        <a href="/comments/<%= comment.id%>">Edit</a>
+        <%- include('../partials/deleteForm',
+        {url:`/comments/${comment.id}`})%>
     <%})%>
 <%}%>

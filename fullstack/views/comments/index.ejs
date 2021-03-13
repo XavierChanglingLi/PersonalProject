@@ -2,7 +2,11 @@
 <form action="/comments" method="GET">
     <div>
         <label>Course ID</label>
-        <input type="text" name="id" value="<%= searchOptions.id%>">
+        <select name="courseNumber">
+            <% courses.forEach(course => { %>
+                <option selected label = "<%= course.name%>" value="<%= course.id %>">
+            <%})%>
+        </select>
     </div>
     <div>
         <label>Professor Name</label>

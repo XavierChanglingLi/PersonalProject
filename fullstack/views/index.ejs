@@ -1,1 +1,8 @@
-Middle
+<h2>Recently Added</h2>
+<div>
+    <% comments.forEach(comment =>{%>
+    <a href="/comments/<%=comment.id%>">
+        <div><%=comment.description%></div>
+    </a>
+    <%})%>
+</div>
